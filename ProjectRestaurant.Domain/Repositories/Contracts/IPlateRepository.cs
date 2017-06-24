@@ -8,8 +8,8 @@ namespace ProjectRestaurant.Domain.Repositories.Contracts
         List<Plate> Get();
         Plate Get(int id);
         List<Plate> GetByName(string name);
-        bool Create(Plate autor);
-        bool Update(Plate autor);
+        bool Create(Plate plate);
+        bool Update(Plate plate);
         void Delete(int id);
     }
 }

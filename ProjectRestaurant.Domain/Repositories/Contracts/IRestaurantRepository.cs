@@ -6,10 +6,10 @@ namespace ProjectRestaurant.Domain.Repositories.Contracts
     public interface IRestaurantRepository : IDisposable
     {
         List<Restaurant> Get();
-        Plate Get(int id);
+        Restaurant Get(int id);
         List<Restaurant> GetByName(string name);
-        bool Create(Restaurant autor);
-        bool Update(Restaurant autor);
+        bool Create(Restaurant restaurant);
+        bool Update(Restaurant restaurant);
         void Delete(int id);
     }
 }
