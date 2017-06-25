@@ -9,6 +9,7 @@ namespace ProjectRestaurant.Infra.Mappings
         {
             ToTable("Restaurantes");
             Property(x => x.Name).HasMaxLength(60).IsRequired();
+            Property(x => x.Details).HasMaxLength(300).IsRequired();
 
             HasMany(x => x.Plates).WithRequired(x => x.Restaurant);
 

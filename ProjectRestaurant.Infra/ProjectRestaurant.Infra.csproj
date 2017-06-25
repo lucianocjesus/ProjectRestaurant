@@ -50,11 +50,15 @@
     <Compile Include="Contexts\RestaurantDataContext.cs" />
     <Compile Include="Mappings\PlatesMap.cs" />
     <Compile Include="Mappings\RestaurantsMap.cs" />
+    <Compile Include="Migrations\201706250211432_v1.cs" />
+    <Compile Include="Migrations\201706250211432_v1.Designer.cs">
+      <DependentUpon>201706250211432_v1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\PlatesRepository.cs" />
     <Compile Include="Repositories\RestaurantsRepository.cs" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
@@ -64,6 +68,11 @@
       <Project>{86eabb19-2065-4f5e-9b7b-5a7923cd1eef}</Project>
       <Name>ProjectRestaurant.Domain</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201706250211432_v1.resx">
+      <DependentUpon>201706250211432_v1.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

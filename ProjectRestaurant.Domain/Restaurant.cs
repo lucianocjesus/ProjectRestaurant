@@ -10,6 +10,7 @@ namespace ProjectRestaurant.Domain
         }
         public int Id { get; set; }
         public string Name { get; set; }
+        public string Details { get; set; }
         public ICollection<Plate> Plates { get; set; }
     }
 }
