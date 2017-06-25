@@ -9,23 +9,29 @@ namespace ProjectRestaurant.Web.Controllers
     [RoutePrefix("restaurantes")]
     public class RestaurantController : Controller
     {
-        private readonly IRestaurantRepository _repository;
+        private readonly IRestaurantRepository _restaurantRepository;
+        private readonly IPlateRepository _plateRepository;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public RestaurantController(IRestaurantRepository repository)
+        public RestaurantController(IRestaurantRepository restaurantRepository, IPlateRepository plateRepository, IUnitOfWork unitOfWork)
         {
-            _repository = repository;
+            _restaurantRepository = restaurantRepository;
+            _plateRepository = plateRepository;
+            _unitOfWork = unitOfWork;
         }
 
         [Route("lista")]
         public ActionResult Index()
         {
             var list = new List<RestaurantModelView>();
-            var restaurantModel = _repository.Get();
+            var restaurantModel = _restaurantRepository.Get();
             foreach (var item in restaurantModel)
             {
-                var modelView = new RestaurantModelView();
-                modelView.Id = item.Id;
-                modelView.Name = item.Name;
+                var modelView = new RestaurantModelView
+                {
+                    Id = item.Id,
+                    Name = item.Name
+                };
                 list.Add(modelView);
             }
             return View(list);
@@ -53,14 +59,14 @@ namespace ProjectRestaurant.Web.Controllers
                 return View(edit);
             }
             var restaurant = new Restaurant { Name = modelView.Name, Details = modelView.Details };
-            _repository.Create(restaurant);
+            _restaurantRepository.Create(restaurant);
             return RedirectToAction("Index");
         }
 
         [Route("editar/{id:int}")]
         public ActionResult Edit(int id)
         {
-            var restaurantModel = _repository.Get(id);
+            var restaurantModel = _restaurantRepository.Get(id);
             var restaurantView = new EditRestaurantModelView
             {
                 Id = restaurantModel.Id,
@@ -75,7 +81,7 @@ namespace ProjectRestaurant.Web.Controllers
         public ActionResult Edit(EditRestaurantModelView modelView)
         {
             var restaurantModel = new Restaurant { Id = modelView.Id, Name = modelView.Name, Details = modelView.Details };
-            if (_repository.Update(restaurantModel))
+            if (_restaurantRepository.Update(restaurantModel))
                 return RedirectToAction("Index");
 
             return View(modelView);
@@ -84,7 +90,7 @@ namespace ProjectRestaurant.Web.Controllers
         [Route("detalhes/{id:int}")]
         public ActionResult Details(int id)
         {
-            var restaurantModel = _repository.Get(id);
+            var restaurantModel = _restaurantRepository.Get(id);
             var restaurantView = new EditRestaurantModelView
             {
                 Id = restaurantModel.Id,
@@ -97,7 +103,7 @@ namespace ProjectRestaurant.Web.Controllers
         [Route("excluir/{id:int}")]
         public ActionResult Delete(int id)
         {
-            var restaurantModel = _repository.Get(id);
+            var restaurantModel = _restaurantRepository.Get(id);
             var restaurantView = new EditRestaurantModelView
             {
                 Id = restaurantModel.Id,
@@ -112,7 +118,7 @@ namespace ProjectRestaurant.Web.Controllers
         [ActionName("Delete")]
         public ActionResult DeleteConfirm(int id)
         {
-            _repository.Delete(id);
+            _unitOfWork.DeletePlatesAndRestaurant(id);
             return RedirectToAction("Index");
         }
     }

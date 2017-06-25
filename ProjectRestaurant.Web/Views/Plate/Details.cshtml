@@ -1,0 +1,42 @@
+﻿@model ProjectRestaurant.Web.Models.EditPlateModelView
+
+@{
+    ViewBag.Title = "Destalhes do Prato";
+}
+
+<h2>Destalhes do Prato</h2>
+
+<div>
+    @*<h4>EditPlateModelView</h4>*@
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NamePlate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NamePlate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ingredients)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ingredients)
+        </dd>
+        
+        <dt>
+            @Html.DisplayNameFor(model => model.NameRestaurant)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NameRestaurant)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Voltar", "Index")
+</p>

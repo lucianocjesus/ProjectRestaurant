@@ -19,6 +19,7 @@ namespace ProjectRestaurant.Web
             container.RegisterType<RestaurantDataContext, RestaurantDataContext>();
             container.RegisterType<IPlateRepository, PlatesRepository>();
             container.RegisterType<IRestaurantRepository, RestaurantsRepository>();
+            container.RegisterType<IUnitOfWork, UnitOfWork>();
 
             DependencyResolver.SetResolver(new UnityDependencyResolver(container));
         }

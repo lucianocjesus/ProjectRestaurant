@@ -1,0 +1,40 @@
+﻿@model ProjectRestaurant.Web.Models.EditPlateModelView
+
+@{
+    ViewBag.Title = "Excluir Prato";
+}
+
+<h2>Excluir Prato</h2>
+
+<h3>Deseja excluir este prato?</h3>
+<div>
+    @*<h4>EditRestaurantModelView</h4>*@
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NamePlate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NamePlate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ingredients)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ingredients)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Ecluir" class="btn btn-default" /> |
+            @Html.ActionLink("Voltar", "Index")
+        </div>
+    }
+</div>

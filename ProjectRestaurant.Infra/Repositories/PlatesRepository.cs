@@ -18,6 +18,15 @@ namespace ProjectRestaurant.Infra.Repositories
 
         public List<Plate> Get()
         {
+            //var plate = (from p in _db.Plates
+            //    join r in _db.Restaurants on p.RestaurantId equals r.Id
+            //    select new
+            //    {
+            //        NamePlate = r.Name,
+            //        NameRestaurant = p.Name,
+            //        p.Ingredients
+            //    }).ToList();
+
             return _db.Plates.ToList();
         }
 
@@ -63,7 +72,6 @@ namespace ProjectRestaurant.Infra.Repositories
         {
             var plate = _db.Plates.Find(id);
             if (plate != null) _db.Plates.Remove(plate);
-            _db.SaveChanges();
         }
 
         public void Dispose()

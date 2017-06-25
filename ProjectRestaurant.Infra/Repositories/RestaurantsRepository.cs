@@ -21,6 +21,11 @@ namespace ProjectRestaurant.Infra.Repositories
             return _db.Restaurants.ToList();
         }
 
+        public Restaurant GetPlateByRestaurant(int id)
+        {
+            return _db.Restaurants.Include(p => p.Plates).FirstOrDefault(x => x.Id == id);
+        }
+
         public Restaurant Get(int id)
         {
             return _db.Restaurants.Find(id);

@@ -164,11 +164,14 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PlateController.cs" />
     <Compile Include="Controllers\RestaurantController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\EditPlateModelView.cs" />
     <Compile Include="Models\EditRestaurantModelView.cs" />
+    <Compile Include="Models\PlateModelView.cs" />
     <Compile Include="Models\RestaurantModelView.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -216,6 +219,11 @@
     <Content Include="Views\Restaurant\Edit.cshtml" />
     <Content Include="Views\Restaurant\Details.cshtml" />
     <Content Include="Views\Restaurant\Delete.cshtml" />
+    <Content Include="Views\Plate\Index.cshtml" />
+    <Content Include="Views\Plate\Create.cshtml" />
+    <Content Include="Views\Plate\Edit.cshtml" />
+    <Content Include="Views\Plate\Details.cshtml" />
+    <Content Include="Views\Plate\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
